@@ -1,9 +1,14 @@
 name: Deploy Astro Blog to GitHub Pages
 
 on:
+  # 本地开发 push main 时，照常触发部署
   push:
-    branches: [main]
-  workflow_dispatch: {}
+    branches: [ main ]
+
+  # 当 Gemini Issue Maintainer workflow 跑完时，也触发一轮部署
+  workflow_run:
+    workflows: ["Gemini Issue Maintainer"]
+    types: [completed]
 
 permissions:
   contents: read
@@ -12,7 +17,16 @@ permissions:
 
 jobs:
   build:
+    # 只在：
+    # - 普通 push，或
+    # - Gemini workflow 成功 时运行 build
+    if: |
+      github.event_name == 'push' ||
+      (github.event_name == 'workflow_run' &&
+       github.event.workflow_run.conclusion == 'success')
+
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -20,7 +34,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: '20'
 
       - name: Install dependencies
         run: npm ci || npm install
