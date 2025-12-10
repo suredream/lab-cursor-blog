@@ -1,0 +1,28 @@
+{
+  "name": "lab-cursor-blog",
+  "version": "1.0.0",
+  "description": "GitHub Pages + GitHub Actions + Cursor CLI",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suredream/lab-cursor-blog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/suredream/lab-cursor-blog/issues"
+  },
+  "homepage": "https://github.com/suredream/lab-cursor-blog#readme",
+  "dependencies": {
+    "@types/node": "^25.0.0",
+    "astro": "^5.16.5",
+    "gray-matter": "^4.0.3",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,4 @@
+node_modules/
+dist/
+.gemini/
+gha-creds-*.json

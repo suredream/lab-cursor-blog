@@ -1,0 +1,28 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+
+// 直接让 Astro 帮我们加载所有 posts 目录下的 markdown 页面
+// 注意：路径是相对于当前文件（index.astro）的
+const posts = (await Astro.glob('./posts/*.md'))
+  .sort((a, b) => {
+    const aDate = new Date(a.frontmatter.pubDate ?? 0);
+    const bDate = new Date(b.frontmatter.pubDate ?? 0);
+    return bDate - aDate;
+  });
+---
+
+<BlogLayout title="My Lab Blog">
+  <h2>Posts</h2>
+  <ul>
+    {posts.map((post) => (
+      <li>
+        <a href={post.url}>{post.frontmatter.title}</a>
+        {post.frontmatter.pubDate && (
+          <span style="margin-left: 0.5rem; font-size: 0.9rem; color: #666;">
+            ({new Date(post.frontmatter.pubDate).toISOString().slice(0, 10)})
+          </span>
+        )}
+      </li>
+    ))}
+  </ul>
+</BlogLayout>
