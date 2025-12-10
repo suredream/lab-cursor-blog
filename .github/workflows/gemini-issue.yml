@@ -11,11 +11,10 @@ permissions:
 
 jobs:
   gemini_issue_handler:
-    # 只处理包含 '/gemini' 的评论
-    if: >
-      github.event_name == 'issue_comment' &&
-      contains(github.event.comment.body, '/gemini')
     runs-on: ubuntu-latest
+    # 只处理包含 /gemini 的评论
+    if: contains(github.event.comment.body, '/gemini')
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -25,6 +24,29 @@ jobs:
         uses: google-github-actions/run-gemini-cli@v0.1.16
         with:
           gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
+          gemini_debug: true
+
+          # 关键：写一份项目级 settings.json，关掉会乱跑 shell 的东西
+          settings: |
+            {
+              "output": {
+                "format": "text"
+              },
+              "experimental": {
+                "codebaseInvestigatorSettings": {
+                  "enabled": false
+                }
+              },
+              "tools": {
+                "autoAccept": true,
+                "shell": {
+                  "enableInteractiveShell": false,
+                  "showColor": false
+                }
+              }
+            }
+
+          # 让它只专注于改 Astro 博客相关文件，不要自己发明测试命令
           prompt: |
             You are an autonomous code-maintenance agent for this Astro blog repository.
 
@@ -34,23 +56,25 @@ jobs:
             ---
 
             Instructions:
-            1. Extract the content of the comment that follows the first '/gemini' token.
-            2. Interpret that as the user's main request.
-            3. Plan the minimal set of code or content changes required to satisfy it.
-            4. Use Gemini CLI tools (e.g., WriteFile, ApplyPatch) to:
-               - Add or edit Markdown posts under src/pages/posts/.
-               - Update src/pages/index.astro and layouts/BlogLayout.astro as needed.
-            5. Keep the site simple and ensure that 'npm run build' will still succeed.
-            6. When you are done, ensure all changes are written to disk and produce
-               a concise summary of the modifications you made.
+            1. Treat everything after the first '/gemini' token as the user's main request.
+            2. Do NOT attempt to run shell commands or start dev servers.
+            3. Only use file-oriented tools (read/modify/write/apply patches) on this repo.
+            4. Typical operations:
+               - Add/edit Markdown posts under src/pages/posts/
+               - Adjust src/pages/index.astro
+               - Adjust src/layouts/BlogLayout.astro
+            5. Make the minimal set of changes required to satisfy the request.
+            6. Ensure the project will still pass 'npm run build' for Astro.
+            7. When finished, write all modified files to disk and output a concise summary.
 
-          settings: |
-            {
-              "model": "gemini-1.5-pro",
-              "temperature": 0.3
-            }
+      - name: Show Gemini CLI error (if any)
+        if: failure() || steps.gemini.outputs.error != ''
+        run: |
+          echo "Gemini CLI reported error (if any):"
+          echo '${{ steps.gemini.outputs.error }}'
 
       - name: Commit and push changes (if any)
+        if: success()
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
