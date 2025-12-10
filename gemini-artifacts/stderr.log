@@ -1,0 +1,55 @@
+[DEBUG] [MemoryDiscovery] Loading server hierarchical memory for CWD: /home/runner/work/lab-cursor-blog/lab-cursor-blog (importFormat: tree)
+[DEBUG] [MemoryDiscovery] Searching for GEMINI.md starting from CWD: /home/runner/work/lab-cursor-blog/lab-cursor-blog
+[DEBUG] [MemoryDiscovery] Determined project root: /home/runner/work/lab-cursor-blog/lab-cursor-blog
+[DEBUG] [BfsFileSearch] Scanning [1/200]: batch of 1
+[DEBUG] [BfsFileSearch] Scanning [6/200]: batch of 5
+[DEBUG] [BfsFileSearch] Scanning [15/200]: batch of 9
+[DEBUG] [BfsFileSearch] Scanning [30/200]: batch of 15
+[DEBUG] [BfsFileSearch] Scanning [45/200]: batch of 15
+[DEBUG] [BfsFileSearch] Scanning [50/200]: batch of 5
+[DEBUG] [BfsFileSearch] Scanning [51/200]: batch of 1
+[DEBUG] [MemoryDiscovery] Final ordered GEMINI.md paths to read: ["/home/runner/work/lab-cursor-blog/lab-cursor-blog/GEMINI.md"]
+[DEBUG] [MemoryDiscovery] Successfully read and processed imports: /home/runner/work/lab-cursor-blog/lab-cursor-blog/GEMINI.md (Length: 1640)
+[DEBUG] [MemoryDiscovery] Combined instructions length: 1709
+[DEBUG] [MemoryDiscovery] Combined instructions (snippet): --- Context from: GEMINI.md ---
+# GEMINI.md
+
+You are the AI maintainer for this repository.
+
+Repository context:
+- This is a small Astro-based static blog deployed to GitHub Pages.
+- Source structure:
+  - /src/pages/index.astro          -> Blog homepage listing posts
+  - /src/pages/posts/*.md           -> Individual blog posts (Markdown with frontmatter)
+  - /src/layouts/BlogLayout.astro   -> Shared blog layout
+- The site is built with `npm run build` and output to `/dist`.
+
+Goals:
+- Keep the bl...
+YOLO mode is enabled. All tool calls will be automatically approved.
+Flushing log events to Clearcut.
+[AgentRegistry] Initialized with 0 agents.
+[STARTUP] StartupProfiler.flush() called with 9 phases
+[STARTUP] Recording metric for phase: cli_startup duration: 98.88473700000009
+[STARTUP] Recording metric for phase: load_settings duration: 1.7673470000001998
+[STARTUP] Recording metric for phase: migrate_settings duration: 1.3901249999998981
+[STARTUP] Recording metric for phase: parse_arguments duration: 17.254754999999932
+[STARTUP] Recording metric for phase: load_cli_config duration: 57.525065999999924
+[STARTUP] Recording metric for phase: initialize_app duration: 6.177486999999928
+[STARTUP] Recording metric for phase: authenticate duration: 0.11824999999998909
+[STARTUP] Recording metric for phase: discover_tools duration: 306.854186
+[STARTUP] Recording metric for phase: initialize_mcp_clients duration: 0.36638200000015786
+Session ID: 10cb3546-db61-4493-8819-ec617ca9aaf9
+The --prompt (-p) flag has been deprecated and will be removed in a future version. Please use a positional argument for your prompt. See gemini --help for more information.
+[DEBUG] [IDEClient] Failed to read IDE connection directory: Error: ENOENT: no such file or directory, scandir '/tmp/gemini/ide'
+    at async Object.readdir (node:internal/fs/promises:952:18)
+    at async IdeClient.getConnectionConfigFromFile (file:///usr/local/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/ide/ide-client.js:443:25)
+    at async file:///usr/local/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/ide/ide-client.js:74:43
+    at async WriteFileToolInvocation.getConfirmationDetails (file:///usr/local/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/tools/write-file.js:98:27)
+    at async CoreToolScheduler._processNextInQueue (file:///usr/local/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/core/coreToolScheduler.js:526:45)
+    at async CoreToolScheduler._schedule (file:///usr/local/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/core/coreToolScheduler.js:487:13) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: '/tmp/gemini/ide'
+}
