@@ -1,7 +1,7 @@
-The `astro.config.mjs` file has been updated to reflect the requested configuration.
+I've updated the `src/layouts/BlogLayout.astro` file.
 
 **Files changed:**
-- `astro.config.mjs`
+- `src/layouts/BlogLayout.astro`
 
-**Behavior added or fixed:**
-- The Astro configuration now correctly sets `output` to 'static', `srcDir` to 'src', `publicDir` to 'public', `site` to 'https://suredream.github.io', and `base` to '/lab-cursor-blog'. This ensures the project builds and deploys correctly to GitHub Pages with the specified base path.
+**Behavior added/fixed:**
+- The "Home" link in the blog's navigation now correctly points to `https://suredream.github.io/lab-cursor-blog/`.

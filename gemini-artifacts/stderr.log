@@ -6,8 +6,8 @@
 [DEBUG] [BfsFileSearch] Scanning [16/200]: batch of 9
 [DEBUG] [BfsFileSearch] Scanning [31/200]: batch of 15
 [DEBUG] [BfsFileSearch] Scanning [46/200]: batch of 15
-[DEBUG] [BfsFileSearch] Scanning [54/200]: batch of 8
-[DEBUG] [BfsFileSearch] Scanning [56/200]: batch of 2
+[DEBUG] [BfsFileSearch] Scanning [53/200]: batch of 7
+[DEBUG] [BfsFileSearch] Scanning [55/200]: batch of 2
 [DEBUG] [MemoryDiscovery] Final ordered GEMINI.md paths to read: ["/home/runner/work/lab-cursor-blog/lab-cursor-blog/GEMINI.md"]
 [DEBUG] [MemoryDiscovery] Successfully read and processed imports: /home/runner/work/lab-cursor-blog/lab-cursor-blog/GEMINI.md (Length: 1640)
 [DEBUG] [MemoryDiscovery] Combined instructions length: 1709
@@ -30,16 +30,16 @@ YOLO mode is enabled. All tool calls will be automatically approved.
 Flushing log events to Clearcut.
 [AgentRegistry] Initialized with 0 agents.
 [STARTUP] StartupProfiler.flush() called with 9 phases
-[STARTUP] Recording metric for phase: cli_startup duration: 114.94504599999982
-[STARTUP] Recording metric for phase: load_settings duration: 1.7818600000000515
-[STARTUP] Recording metric for phase: migrate_settings duration: 1.3497830000001159
-[STARTUP] Recording metric for phase: parse_arguments duration: 18.54466699999989
-[STARTUP] Recording metric for phase: load_cli_config duration: 35.257343999999875
-[STARTUP] Recording metric for phase: initialize_app duration: 6.249199999999973
-[STARTUP] Recording metric for phase: authenticate duration: 0.11652800000001662
-[STARTUP] Recording metric for phase: discover_tools duration: 332.5136029999999
-[STARTUP] Recording metric for phase: initialize_mcp_clients duration: 0.41233999999985826
-Session ID: ed3a0bf3-3dcf-477d-bc2c-0bb150e137b9
+[STARTUP] Recording metric for phase: cli_startup duration: 103.79162999999994
+[STARTUP] Recording metric for phase: load_settings duration: 1.7555989999998474
+[STARTUP] Recording metric for phase: migrate_settings duration: 1.364336000000094
+[STARTUP] Recording metric for phase: parse_arguments duration: 17.834985999999844
+[STARTUP] Recording metric for phase: load_cli_config duration: 30.946009999999887
+[STARTUP] Recording metric for phase: initialize_app duration: 5.895426000000043
+[STARTUP] Recording metric for phase: authenticate duration: 0.10924500000010084
+[STARTUP] Recording metric for phase: discover_tools duration: 174.8808369999997
+[STARTUP] Recording metric for phase: initialize_mcp_clients duration: 0.39532099999996717
+Session ID: 36363e2a-9691-4add-9dec-2272df276236
 The --prompt (-p) flag has been deprecated and will be removed in a future version. Please use a positional argument for your prompt. See gemini --help for more information.
 [DEBUG] [IDEClient] Failed to read IDE connection directory: Error: ENOENT: no such file or directory, scandir '/tmp/gemini/ide'
     at async Object.readdir (node:internal/fs/promises:952:18)
