@@ -1,1 +1,7 @@
-The new blog post `src/pages/posts/demo-from-gemini.md` has been created with the specified title, date, intro paragraph, and bullet points.
+The `astro.config.mjs` file has been updated to reflect the requested configuration.
+
+**Files changed:**
+- `astro.config.mjs`
+
+**Behavior added or fixed:**
+- The Astro configuration now correctly sets `output` to 'static', `srcDir` to 'src', `publicDir` to 'public', `site` to 'https://suredream.github.io', and `base` to '/lab-cursor-blog'. This ensures the project builds and deploys correctly to GitHub Pages with the specified base path.
